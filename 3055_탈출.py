@@ -2,6 +2,9 @@ from collections import deque
 import sys
 input = sys.stdin.readline
 
+# remove 써서 없애기
+# if (,) in 고슴도치
+
 def bfs(r,c):
     global cnt
     #상0 우1 하2 좌3
