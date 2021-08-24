@@ -1,3 +1,5 @@
+## queue에 도치, 물 구분 넣어서 다시 해보기
+
 from collections import deque
 import sys
 input = sys.stdin.readline
