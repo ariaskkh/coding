@@ -1,51 +1,56 @@
 from collections import deque
-import sys
-input = sys.stdin.readline
-########## bfs 리스트
 
-# def bfs(start):
-#     queue = deque([start])
-#     visited[start] = True
-#     while queue: # 재귀 대신 while 반복문 사용
-#         v = queue.popleft()
-#         print(v, end=' ')
-#         for i in graph[v]:
-#             if not visited[i]:
-#                 queue.append(i)
-#                 visited[i] = True
+dx = [1, -1, 0, 0]
+dy = [0, 0, 1, -1]
 
-# n,m,v = map(int, input().split())
-# visited = [False] * (n+1)
-# graph = [] # 리스트로 구현
-# for _ in range(n+1):
-#     graph.append([])
-# for i in range(m): # 무방향일때
-#     x, y = map(int, input().split())
-#     graph[x].append(y)
-#     graph[y].append(x)
-# for i in range(1,n+1):
-#     graph[i].sort()
+def bfs(x, y):
+    q.append([x, y])
+    c[x][y] = 1
+    while q:
+        qlen = len(q)
+        while qlen:
+            x, y = q.popleft()
+            for i in range(4):
+                nx = x + dx[i]
+                ny = y + dy[i]
+                if 0 <= nx < n and 0 <= ny < m:
+                    if a[nx][ny] == '.' and c[nx][ny] == 0:
+                        c[nx][ny] = c[x][y] + 1
+                        q.append([nx, ny])
+                    elif a[nx][ny] == 'D':
+                        print(c[x][y])
+                        return
+            qlen -= 1
+        water()
 
-# bfs(1)
+    print("KAKTUS")
+    return
 
-########## dfs 행렬
+def water():
+    qlen = len(wq)
+    while qlen:
+        x, y = wq.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < n and 0 <= ny < m:
+                if a[nx][ny] == '.':
+                    a[nx][ny] = '*'
+                    wq.append([nx, ny])
+        qlen -= 1
 
-def bfs(start):
-    queue = deque([start])
-    visited[start] = 1
-    while queue:
-        v = queue.popleft()
-        print(v, end=' ')
-        for i in range(1, n+1):
-            if graph[v][i] == 1 and visited[i] == 0:
-                queue.append(i)
-                visited[i] = 1
+n, m = map(int, input().split())
+a = [list(map(str, input())) for _ in range(n)]
+c = [[0]*m for _ in range(n)]
+q, wq = deque(), deque()
 
-n, m, v = map(int, input().split())
-visited = [0] *(n+1)
-graph = [[0]*(n+1) for _ in range(n+1)]
-for i in range(m):
-    a, b = map(int, input().split())
-    graph[a][b] = graph[b][a] = 1
-    
-bfs(v)
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == 'S':
+            x1, y1 = i, j
+            a[i][j] = '.'
+        elif a[i][j] == '*':
+            wq.append([i, j])
+
+water()
+bfs(x1, y1)

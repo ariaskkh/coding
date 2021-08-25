@@ -28,7 +28,7 @@ def bfs(r,c):
     while queue:
         if flag:
             break
-        x, y = queue.popleft() # 홍수 먼저 넣어서 고슴도치보다 홍수가 먼저 pop되어 계산됨
+        x, y = queue.popleft() # 고슴도치 먼저 넣어서 홍수보다 고슴도치가 먼저 pop되어 계산됨
         if graph[x][y] == '*': # 홍수일 때
             for k in range(4):
                 nx, ny = x+dx[k], y+dy[k]
