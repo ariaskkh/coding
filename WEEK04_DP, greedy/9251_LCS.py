@@ -1,30 +1,30 @@
-## 하향식 - 시간 초과
+# 하향식 - 시간 초과
 
-# import sys
-# input = sys.stdin.readline
-# sys.setrecursionlimit(10**5)
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**5)
 
-# #부분 수열의 최장 길이
-# def LCS(X,Y): # x, y 는 list
-#     x = len(X)
-#     y = len(Y)
-#     if x == 0 or y == 0:
-#         dp[x][y] = 0
-#         return dp[x][y]
-#     #메모이제이션
-#     if dp[x][y] != 0:
-#         return dp[x][y]
-#     if X[-1] == Y[-1]:
-#         dp[x][y] = LCS(X[:x-1],Y[:y-1]) +1
-#         return dp[x][y]
-#     else:
-#         dp[x][y] = max(LCS(X[:x-1],Y), LCS(X,Y[:y-1]))
-#         return dp[x][y]
+#부분 수열의 최장 길이
+def LCS(X,Y): # x, y 는 list
+    x = len(X)
+    y = len(Y)
+    if x == 0 or y == 0:
+        dp[x][y] = 0
+        return dp[x][y]
+    #메모이제이션
+    if dp[x][y] != 0:
+        return dp[x][y]
+    if X[-1] == Y[-1]:
+        dp[x][y] = LCS(X[:x-1],Y[:y-1]) +1
+        return dp[x][y]
+    else:
+        dp[x][y] = max(LCS(X[:x-1],Y), LCS(X,Y[:y-1]))
+        return dp[x][y]
 
-# a = list(map(str,input().strip()))
-# b = list(map(str,input().strip()))
-# dp = [[0] * (len(b)+1) for _ in range(len(a)+1)]
-# print(LCS(a,b))
+a = list(map(str,input().strip()))
+b = list(map(str,input().strip()))
+dp = [[0] * (len(b)+1) for _ in range(len(a)+1)]
+print(LCS(a,b))
 
 
 ################################################################################################
