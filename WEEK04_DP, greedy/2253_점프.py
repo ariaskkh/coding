@@ -1,44 +1,44 @@
-## 처음 풀이, 그 이전 3가지 경우를 고려
-import sys
-input = sys.stdin.readline
+# ## 처음 풀이, 그 이전 3가지 경우를 고려
+# import sys
+# input = sys.stdin.readline
 
-N, M = map(int, input().split())
-# 작은 돌
-small_stone = [1]*(N+1)
-for _ in range(M):
-    x =int(input().strip())
-    small_stone[x] = 0
+# N, M = map(int, input().split())
+# # 작은 돌
+# small_stone = [1]*(N+1)
+# for _ in range(M):
+#     x =int(input().strip())
+#     small_stone[x] = 0
 
-J = int((2*N-1)**(1/2))
+# J = int((2*N-1)**(1/2))
 
-dp = [[0]*(N+1) for _ in range(J+1)]
-dp[1][2] = 1
+# dp = [[0]*(N+1) for _ in range(J+1)]
+# dp[1][2] = 1
 
-for k in range(3,N+1): # 총 이동 거리
-    if small_stone[k] == 0:
-            continue
-    for v in range(1, J+1): # 한 번에 이동하는 거리(속도)
-        min_v = float('inf')
-        if dp[v-1][k-v] != 0 :
-            min_v = min(min_v, dp[v-1][k-v]+1)
+# for k in range(3,N+1): # 총 이동 거리
+#     if small_stone[k] == 0:
+#             continue
+#     for v in range(1, J+1): # 한 번에 이동하는 거리(속도)
+#         min_v = float('inf')
+#         if dp[v-1][k-v] != 0 :
+#             min_v = min(min_v, dp[v-1][k-v]+1)
 
-        if k-v > 0 and dp[v][k-v] != 0:
-            min_v = min(min_v, dp[v][k-v]+1)
+#         if k-v > 0 and dp[v][k-v] != 0:
+#             min_v = min(min_v, dp[v][k-v]+1)
 
-        if v+1 <= J and k-v > 0 and dp[v+1][k-v] != 0:
-            min_v = min(min_v, dp[v+1][k-v]+1)
+#         if v+1 <= J and k-v > 0 and dp[v+1][k-v] != 0:
+#             min_v = min(min_v, dp[v+1][k-v]+1)
 
-        if min_v == float('inf'):
-            min_v = 0
-        dp[v][k] = min_v
-ans = []
-for V in range(J+1):
-    if dp[V][N] != 0:
-        ans.append(dp[V][N])
-if not ans:
-    print(-1)
-else:
-    print(min(ans))
+#         if min_v == float('inf'):
+#             min_v = 0
+#         dp[v][k] = min_v
+# ans = []
+# for V in range(J+1):
+#     if dp[V][N] != 0:
+#         ans.append(dp[V][N])
+# if not ans:
+#     print(-1)
+# else:
+#     print(min(ans))
 
 
 ########################################################################
@@ -103,52 +103,52 @@ if ans == 10001:
 else:
     print(ans)
 
-#############################################################################
-## 이후 3가지 경우를 고려, 메모리 초과...
-import sys
-input = sys.stdin.readline
+# #############################################################################
+# ## 이후 3가지 경우를 고려, 메모리 초과...
+# import sys
+# input = sys.stdin.readline
 
-N, M = map(int, input().split())
+# N, M = map(int, input().split())
 
-stone = [1]*(N+1)
-for _ in range(M):
-    x =int(input().strip())
-    stone[x] = 0
+# stone = [1]*(N+1)
+# for _ in range(M):
+#     x =int(input().strip())
+#     stone[x] = 0
 
-J = int((2*N-1)**(1/2))
+# J = int((2*N-1)**(1/2))
 
-dp = [[0]*(J*N) for _ in range(J+1)]
-dp[1][2] = 1
+# dp = [[0]*(J*N) for _ in range(J+1)]
+# dp[1][2] = 1
 
-for k in range(2, N+1):
-    for v in range(1, J+1):
-        if dp[v][k] == 0:
-            continue
+# for k in range(2, N+1):
+#     for v in range(1, J+1):
+#         if dp[v][k] == 0:
+#             continue
         
         
-        # if v-1>0 and k+(v-1) < N+1:
-        if v-1>0:
-            if dp[v-1][k+(v-1)] == 0:
-                dp[v-1][k+(v-1)] = dp[v][k]+1
-            dp[v-1][k+(v-1)] = min(dp[v-1][k+(v-1)], dp[v][k]+1)
+#         # if v-1>0 and k+(v-1) < N+1:
+#         if v-1>0:
+#             if dp[v-1][k+(v-1)] == 0:
+#                 dp[v-1][k+(v-1)] = dp[v][k]+1
+#             dp[v-1][k+(v-1)] = min(dp[v-1][k+(v-1)], dp[v][k]+1)
 
         
-        if k+v <= N:
-            if dp[v][k+v] == 0:
-                dp[v][k+v] = dp[v][k]+1
-            dp[v][k+v] = min(dp[v][k+v], dp[v][k]+1)
+#         if k+v <= N:
+#             if dp[v][k+v] == 0:
+#                 dp[v][k+v] = dp[v][k]+1
+#             dp[v][k+v] = min(dp[v][k+v], dp[v][k]+1)
 
         
-        if k+(v+1) <= N:
-            if dp[v+1][k+(v+1)] == 0:
-                dp[v+1][k+(v+1)] = dp[v][k] +1
-            dp[v+1][k+(v+1)] = min(dp[v+1][k+(v+1)], dp[v][k] +1)
+#         if k+(v+1) <= N:
+#             if dp[v+1][k+(v+1)] == 0:
+#                 dp[v+1][k+(v+1)] = dp[v][k] +1
+#             dp[v+1][k+(v+1)] = min(dp[v+1][k+(v+1)], dp[v][k] +1)
 
-ans = []
-for V in range(J+1):
-    if dp[V][N] != 0:
-        ans.append(dp[V][N])
-if not ans:
-    print(-1)
-else:
-    print(min(ans))
+# ans = []
+# for V in range(J+1):
+#     if dp[V][N] != 0:
+#         ans.append(dp[V][N])
+# if not ans:
+#     print(-1)
+# else:
+#     print(min(ans))
