@@ -96,7 +96,6 @@ for i in range(2, N+1):
     for v in range(1,int((2*i)**0.5)+1):
         dp[i][v] = min(dp[i-v][v-1],dp[i-v][v],dp[i-v][v+1]) +1
 
-
 ans = min(dp[N])
 if ans == 10001:
     print(-1)
