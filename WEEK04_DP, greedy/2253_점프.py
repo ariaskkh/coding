@@ -86,14 +86,14 @@ N, stone_n = map(int, input().split())
 stone_small = set()
 for _ in range(stone_n):
     stone_small.add(int(input().rstrip()))
-
-dp  = [[10001]* (int((2*N)**0.5)+2)  for _ in range(N+1)]
+speed_limit = int((2*N)**0.5)+1
+dp  = [[10001]* (speed_limit+1)  for _ in range(N+1)]
 
 dp[1][0] = 0
 for i in range(2, N+1):
     if i in stone_small:
         continue
-    for v in range(1,int((2*i)**0.5)+1):
+    for v in range(1,int(speed_limit)):
         dp[i][v] = min(dp[i-v][v-1],dp[i-v][v],dp[i-v][v+1]) +1
 
 ans = min(dp[N])
