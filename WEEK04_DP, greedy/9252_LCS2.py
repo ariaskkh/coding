@@ -29,8 +29,8 @@ def LCS_str(x1,y1):
     if dp[x1][y1] == 0:
         return
     # X, Y 리스트의 가장 끝 원소의 값이 같은 경우, 그 문자 result에 저장
-    if X[:x1][-1] == Y[:y1][-1]:
-        result.append(X[:x1][-1])
+    if X[x1-1] == Y[y1-1]:
+        result.append(X[x1-1])
         LCS_str(x1-1,y1-1)
     # X, Y 리스트의 가장 끝 원소의 값이 다른 경우, X,Y 리스트에서 마지막 원소를 제외했을 때 LCS가 더 큰 경우로 이동
     else:
@@ -46,7 +46,7 @@ print(''.join(result))
 
 
 ###########################################################################
-## 수정 코드 - 코드 길이 짧음
+## 수정 코드 - 코드 길이 짧음, DP 테이블에 문자열을 저장
 
 import sys
 input = sys.stdin.readline

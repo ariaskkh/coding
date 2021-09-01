@@ -18,6 +18,7 @@ for i in range(1, N+1):
             if w <= j:
                 if bag[i-1][j] == 0 :
                     bag[i][j] = v
+                # 새 물건을 넣고 난 나머지 무게에 대한 가치 : bag[i-1][j-w]
                 else:
                     bag[i][j] = max(bag[i-1][j], v + bag[i-1][j-w])
             else:

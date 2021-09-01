@@ -1,3 +1,5 @@
+## 실패 비트마스크 알아야 함
+
 from collections import deque
 import sys
 input = sys.stdin.readline
