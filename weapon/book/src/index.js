@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './6장/App';
+// import App from './10장/App';
+import App from './애플코딩실습/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
