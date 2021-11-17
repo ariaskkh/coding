@@ -39,7 +39,6 @@ import sys
 input = sys.stdin.readline
 
 stack = list(input().strip())
-# print(stack)
 stack2 = []
 M = int(input().strip())
 
