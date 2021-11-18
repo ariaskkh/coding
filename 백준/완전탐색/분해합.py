@@ -3,16 +3,12 @@ input = sys.stdin.readline
 
 x = input().strip()
 X = int(x)
+cnt = 0
 for i in range(X):
     tmp = list(str(i))
     if X == i + sum(map(int, tmp)):
         print(i)
+        cnt +=1
         break
-
-
-
-# a = '12345'
-# b = list(a)
-# print(b)
-# c = sum(map(int, b))
-# print(c)
+if cnt == 0:
+    print(0)
