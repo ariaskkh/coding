@@ -60,4 +60,11 @@ learn = [0] * 26
 print(words)
 
 for c in ('a', 'c', 'i', 'n', 't'):
-    print(ord(c)- ord('a'))
+    learn[print(ord(c)- ord('a'))] = 1
+
+def dfs(idx, cnt):
+    global ans
+
+    if cnt == k -5:
+        readcnt = 0
+        
