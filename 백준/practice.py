@@ -17,17 +17,5 @@ for i in range(1,kinds+1):
     graph[x].append(y)
     graph[y].append(x)
 
-print(graph)
-print(visited)
-# j = 1
-
-# while visited[j] != 0:
-#     for k in range(len(graph[j])):
-#         j = graph[k]
-#     visited[j] = 1
-
-    # print(j, graph[j])
-# print(visited)
-
 dfs(1)
 print(sum(visited)-1)
