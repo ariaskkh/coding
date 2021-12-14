@@ -1,11 +1,9 @@
 import sys
 input = sys.stdin.readline
-from collections import deque
 
 n = int(input())
 
 tri = [list(map(int,input().split())) for _ in range(n)]
-graph = [[0]*n for _ in range(n)]
 
 def solution(tri):
     for i in range(1, len(tri)):
