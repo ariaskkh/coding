@@ -11,4 +11,4 @@ for coin in coins:
     for i in range(coin, k+1):
         DP[i] += DP[i-coin]
 
-print(DP)
+print(DP[-1])
