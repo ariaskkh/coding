@@ -9,7 +9,7 @@ ans = []
 tmp = arr[0]
 
 for i in range(1, len(arr)):
-    if tmp[1] >= arr[i][0]:
+    if tmp[1] > arr[i][0]:
         if tmp[1] >= arr[i][1]:
             tmp = arr[i]
     else:
@@ -18,5 +18,5 @@ for i in range(1, len(arr)):
         ans.append(tmp)
         tmp = arr[i]
 ans.append(tmp)
-print(ans)
+# print(ans)
 print(len(ans))
