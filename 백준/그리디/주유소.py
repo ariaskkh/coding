@@ -33,8 +33,6 @@ N = int(input().strip())
 roads =  list(map(int,input().split()))
 costs =  list(map(int,input().split()))
 leastp = costs[0]
-dist= 0
-# res = roads[0]* costs[0]
 res = 0
 
 for i in range(N-1):
@@ -43,5 +41,3 @@ for i in range(N-1):
     res += leastp * roads[i]
     
 print(res)
-
-    
