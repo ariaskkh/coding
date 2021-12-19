@@ -16,4 +16,3 @@ else:
     p_lists = map(int, m_parse[0].split("+"))
     ans += sum(p_lists)
 print(ans)
-
