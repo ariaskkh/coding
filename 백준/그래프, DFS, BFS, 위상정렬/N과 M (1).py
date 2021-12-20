@@ -1,3 +1,5 @@
+## 백트래킹.... 개쩐다
+
 import sys
 input = sys.stdin.readline
 
@@ -14,8 +16,6 @@ def bt(x): # x는 개수 index
                 bt(x+1)
                 visited[i] = 0
                 arr[x] = 0
-
-
 
 n, m = map(int, input().split())
 visited = [0] * (n+1)
