@@ -15,9 +15,7 @@ def bt(idx):
                 visited[i] = 0
                 arr[idx] = 0
         
-
 n, m = map(int, input().split())
 visited = [0] * (n+1)
 arr = [0] * (m+1)
-
 bt(1)
