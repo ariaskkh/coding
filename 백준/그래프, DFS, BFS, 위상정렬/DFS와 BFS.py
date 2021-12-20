@@ -1,4 +1,4 @@
-# 연결 리스트를 이용
+# 연결 리스트를 이용 
 
 from collections import deque
 import sys
@@ -42,7 +42,7 @@ bfs(graph, V, visited)
 
 
 ##########################################################################################################
-# 연결 행렬을 이용
+# 연결 행렬을 이용. 행렬 전체를 처음에 만듦
 
 from collections import deque
 import sys

@@ -33,7 +33,7 @@
 # print(dist[n-1][m-1])
 
 ############################################################
-# 다시 풀기
+# 다시 풀기 108ms 최소기록 !
 
 import sys
 input =sys.stdin.readline
@@ -63,7 +63,6 @@ def bfs(p,q):
 
 
 bfs(0,0)
-print(visited)
 print(visited[X-1][Y-1])
 
 
