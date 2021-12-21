@@ -71,44 +71,45 @@
 ######################################################
 ## 시간 초과 dfs
 
-# import sys
-# input = sys.stdin.readline
+import sys
+input = sys.stdin.readline
 
-# dx = [1,-1,0,0]
-# dy = [0,0,1,-1]
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
 
-# def bt(x,y,lengg):
-#     global leng
-#     leng = max(leng, lengg)
+def bt(x,y,lengg):
+    global leng
+    leng = max(leng, lengg)
 
-#     for i in range(4):
-#         nx, ny = x+dx[i], y+dy[i]
-#         if 0 <= nx < n and 0 <= ny < m:
-#             # if arr[nx][ny] not in visited[x][y]:
-#             #     visited[nx][ny] = visited[x][y] + arr[nx][ny]
-#             #     bt(nx,ny, lengg+1)
-#             #     visited[nx][ny] = ''
+    for i in range(4):
+        nx, ny = x+dx[i], y+dy[i]
+        if 0 <= nx < n and 0 <= ny < m:
+            # if arr[nx][ny] not in visited[x][y]:
+            #     visited[nx][ny] = visited[x][y] + arr[nx][ny]
+            #     bt(nx,ny, lengg+1)
+            #     visited[nx][ny] = ''
             
-#             if arr[nx][ny] not in passed:
-#                 passed.append(arr[nx][ny])
-#                 bt(nx,ny, lengg+1)
-#                 passed.remove(arr[nx][ny])
+            if arr[nx][ny] not in passed:
+                passed.append(arr[nx][ny])
+                bt(nx,ny, lengg+1)
+                passed.remove(arr[nx][ny])
 
-# leng = 0
-# n, m = map(int, input().split())
+leng = 0
+n, m = map(int, input().split())
 
-# arr = [list(input().strip()) for _ in range(n)]
-# visited = [[""] * (m+1) for _ in range(n)]
-# passed = [arr[0][0]]
-# # visited[0][0] += arr[0][0]
-
-
-# bt(0,0,1)
-# print(leng)
+arr = [list(input().strip()) for _ in range(n)]
+visited = [[""] * (m+1) for _ in range(n)]
+passed = [arr[0][0]]
+# visited[0][0] += arr[0][0]
 
 
-############################################################
-## set으로 풀기
+bt(0,0,1)
+print(leng)
+
+
+########################################################################################################################
+## set으로 풀기.
+##여기서 핵심은 방문했던 곳인 passed(visited)를 전역변수로 안하고 queue에 넣어 pop, add를 해 remove의 필요성을 없앤 것
 
 import sys
 input = sys.stdin.readline
@@ -130,7 +131,6 @@ def bfs(p,q):
                 if arr[nx][ny] not in passed:
                     queue.add((nx,ny, cnt+1,passed + arr[nx][ny]))
                     mmax = max(mmax, cnt+1)
-                    print(queue)
     print(mmax)
 
 mmax = 1
