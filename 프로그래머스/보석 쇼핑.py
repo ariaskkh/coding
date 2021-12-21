@@ -46,12 +46,11 @@ def solution(gems):
             end += 1
             if end == n:
                 break
-
             
             # if curr[gems[end]] != 0: # 이거 틀림...
-            print(curr)
-            print(curr.keys())
-            print(curr.values())
+            
+            # print(curr.keys())
+            # print(curr.values())
             if gems[end] in curr.keys():
                 curr[gems[end]] += 1
             else:
