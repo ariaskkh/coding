@@ -8,6 +8,5 @@ DP[1] = 0
 DP[0] = 1
 
 for i in range(2,n+2):
-    x = DP[i-2] + DP[i-1]
-    DP[i] = x
+    DP[i] = DP[i-2] + DP[i-1]
 print(DP[-1])
