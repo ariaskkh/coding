@@ -13,4 +13,4 @@ for j in range(n-1, -1, -1):
     if stack[-1] < sticks[j]:
         stack.append(sticks[j])
 
-print(stack)
+print(len(stack))
