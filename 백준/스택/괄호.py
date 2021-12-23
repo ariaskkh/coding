@@ -4,9 +4,7 @@ input = sys.stdin.readline
 n = int(input().strip())
 
 def solution(x):
-    
     stack = []
-    # print(i,x,stack)
     i = 0
     while i < len(x):
         if x[i] == "(":
