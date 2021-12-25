@@ -21,10 +21,7 @@ for i in range(1,n):
             ans.append(0)
             stack.append((i,tops[i]))
 
-# for k in range(len(ans)):
-#     print(ans[k], end=" ")
-print(ans)
-print(" ".join(map(str, ans)))
-    
+for k in range(len(ans)):
+    print(ans[k], end=" ")
 
-
+# print(" ".join(map(str, ans)))
