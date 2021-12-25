@@ -116,24 +116,16 @@ def solution(prices):
 
     for i in range(len(prices)):
         answer.append(len(prices)-i-1)
-    print(answer)
     stack.append(0)
-    
+    # prices 한 번씩 돌기
     for i in range(1, len(answer)):
+        # stack 돌며 prices[i] 값 이상은 다 pop. 즉 prices[i] 이하만 남음
         while stack and prices[stack[-1]] > prices[i]:
             x = stack.pop()
             answer[x] = i-x
         stack.append(i)
-        print('stack',stack)
 
-        
-        
     return answer
-
-
-
-
-
 
 prices = [1,2,3,2,3]
 print(solution(prices))
